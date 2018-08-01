@@ -18,7 +18,8 @@
 /// Queue conating currently chosen cards.
 @property (nonatomic, strong) NSMutableArray *chosenCardsQueue; // of Card
 
-@property (nonatomic,strong, readwrite) NSString *lastResultDescription;
+@property (nonatomic, strong, readwrite) NSString *lastResultDescription;
+
 @end
 
 @implementation CardMatchingGame

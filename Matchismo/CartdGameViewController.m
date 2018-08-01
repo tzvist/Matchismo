@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLable;
 
 /// Models \c game
-@property ( strong,nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
@@ -64,14 +64,6 @@
   return [[CardMatchingGame alloc] initWithCardCount:cardCount usingDeck:deck numCardMatchMode:numCardMatchMode];
 }
 
-- (CardMatchingGame *)CreateCardMatchingGame {
-  Deck *deck = [[PlayingCardDeck alloc] init];
-  NSUInteger cardCount = self.cardBottuns.count;
-  uint numCardMatchMode = [self getNumCardMatchMode];
-  
-  return [[CardMatchingGame alloc] initWithCardCount:cardCount usingDeck:deck numCardMatchMode:numCardMatchMode];
-}
-
 - (IBAction)touchCardButton:(UIButton *)sender {
   self.modeSwitch.enabled = NO;
   NSUInteger cardButtonIndex = [self.cardBottuns  indexOfObject:sender];
@@ -106,6 +98,7 @@
   }
   return @"";
 }
+
 - (void) updateButton:(NSUInteger) cardButtonIndex {
   
   Card *card = [self.game cardAtIndex:cardButtonIndex];
