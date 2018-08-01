@@ -12,7 +12,6 @@
 @implementation PlayingCardDeck
 
 - (instancetype)init {
- 
   if (self = [super init]) {
     for (NSString *suit in [PlayingCard validSuits]) {
       for (NSUInteger rank = 1; rank <= [PlayingCard maxRank]; rank++) {

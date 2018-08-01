@@ -27,15 +27,16 @@
 /// Represents choosing a card \c index, in a card match.
 - (void)chooseCardAtIndex:(NSUInteger) index;
 
-/// Returns the card at \c index.
+/// Returns card at \c index.
 - (Card *)cardAtIndex:(NSUInteger) index;
 
-/// Represents the current \c score.
+/// Represents current \c score.
 @property (nonatomic, readonly) NSInteger score;
 
-/// Represents the number of cards to be matched in the game.
+/// Represents number of cards to be matched in the game.
 @property (nonatomic) uint numCardMatchMode;
 
 /// Text description of the last result.
 @property (nonatomic, readonly) NSString *lastResultDescription;
+
 @end

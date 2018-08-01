@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
-/// Object represents a playing card
+/// Object represents a playing card.
 @interface PlayingCard : Card
 
 - (instancetype)init NS_UNAVAILABLE;
 
-/// initializes a new Playing Card with suit and rank
+/// Initializes a new Playing Card with suit and rank.
 - (instancetype)initWithSuit:(NSString *)suit andRank:(NSUInteger)rank NS_DESIGNATED_INITIALIZER;
 
 /// Returns all valid suits for a \c PlayingCard object.

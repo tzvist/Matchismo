@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-/// Object represents a card
+/// Object represents a card.
 @interface Card : NSObject
 
 /// Card contents.
@@ -22,6 +22,5 @@
 
 /// Returns score of matching self with a list of \c otherCards.
 - (int)match:(NSArray *)otherCards;
-
 
 @end

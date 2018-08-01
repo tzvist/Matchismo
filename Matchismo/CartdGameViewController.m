@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  CardGameViewController.m
 //  Matchismo
 //
 //  Created by Tzvi Straus on 24/07/2018.
@@ -11,15 +11,21 @@
 #import "Card.h"
 #import "CardMatchingGame.h"
 
-@interface ViewController ()
+@interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lastResultDescription;
+
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardBottuns;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
-@property ( strong,nonatomic) CardMatchingGame *game;
+
 @property (weak, nonatomic) IBOutlet UILabel *scoreLable;
+
+/// Models \c game
+@property ( strong,nonatomic) CardMatchingGame *game;
+
 @end
 
-@implementation ViewController
+@implementation CardGameViewController
 
 @synthesize game = _game;
 
@@ -42,11 +48,10 @@
       return 3;
     case 2:
       return 4;
-    default:
-      assert(NO);
-      return 2;
   }
+  assert(NO);
 }
+
 - (IBAction)changeCardMatchMode {
   self.game.numCardMatchMode = [self getNumCardMatchMode];
 }
@@ -61,7 +66,7 @@
 
 - (CardMatchingGame *)CreateCardMatchingGame {
   Deck *deck = [[PlayingCardDeck alloc] init];
-  NSUInteger cardCount = [self.cardBottuns count];
+  NSUInteger cardCount = self.cardBottuns.count;
   uint numCardMatchMode = [self getNumCardMatchMode];
   
   return [[CardMatchingGame alloc] initWithCardCount:cardCount usingDeck:deck numCardMatchMode:numCardMatchMode];
@@ -73,6 +78,7 @@
   [self.game chooseCardAtIndex:cardButtonIndex];
   [self updateUI];
 }
+
 - (IBAction)redeal {
   self.game = nil;
   [self updateUI];
@@ -80,36 +86,38 @@
 }
 
 - (void) updateUI {
-  for ( NSUInteger cardButtonIndex = 0; cardButtonIndex < [self.cardBottuns count]; cardButtonIndex++ ) {
-    [self updateButton: cardButtonIndex];
+  for ( NSUInteger cardButtonIndex = 0; cardButtonIndex < self.cardBottuns.count; cardButtonIndex++ ) {
+    [self updateButton:cardButtonIndex];
   }
   self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
   self.lastResultDescription.text = self.game.lastResultDescription;
 }
 
-- (void) updateButton:(NSUInteger) cardButtonIndex {
-  Card *card = [self.game cardAtIndex:cardButtonIndex];
-  
-  NSString * imageName;
-  NSString * cardContents;
-  
-  if (card.isChosen){
-    imageName = @"cardfront";
-    cardContents = card.contents;
-  }else {
-    imageName = @"cardback";
-    cardContents = @"";
+- (NSString *)imageName:(Card *)card {
+  if (card.isChosen) {
+    return @"cardfront";
   }
-  UIButton *cardButton = self.cardBottuns[cardButtonIndex];
-  [self setCardUI:cardButton imageName:imageName cardContents:cardContents isEnabled:(BOOL) !card.isMatched];
+  return @"cardback";
 }
 
-- (void) setCardUI:(UIButton *) card imageName:(NSString *) imageName
-      cardContents:(NSString *) cardContents isEnabled:(BOOL)isEnabled {
-  UIImage * image = [UIImage imageNamed:imageName];
-  [card setBackgroundImage: image  forState:UIControlStateNormal];
-  [card setTitle: cardContents forState:UIControlStateNormal];
-  card.enabled = isEnabled;
+- (NSString *)cardContents:(Card *)card {
+  if (card.isChosen) {
+    return card.contents;
+  }
+  return @"";
+}
+- (void) updateButton:(NSUInteger) cardButtonIndex {
+  
+  Card *card = [self.game cardAtIndex:cardButtonIndex];
+  UIButton *cardButton = self.cardBottuns[cardButtonIndex];
+  
+  NSString *imageName = [self imageName:card ];
+  NSString *cardContents = [self cardContents:card];
+  UIImage *image = [UIImage imageNamed:imageName];
+  
+  [cardButton setBackgroundImage:image forState:UIControlStateNormal];
+  [cardButton setTitle:cardContents forState:UIControlStateNormal];
+  cardButton.enabled = !card.isMatched;
 }
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "CardMatchingGame.h"
+
 @interface CardMatchingGame()
+
 @property (nonatomic, readwrite) NSInteger score;
 
 /// List of cards to match.
@@ -15,6 +17,7 @@
 
 /// Queue conating currently chosen cards.
 @property (nonatomic, strong) NSMutableArray *chosenCardsQueue; // of Card
+
 @property (nonatomic,strong, readwrite) NSString *lastResultDescription;
 @end
 
@@ -23,7 +26,6 @@
 - (instancetype)initWithCardCount:(NSUInteger)cardCount
                  usingDeck:(Deck *)deck
                  numCardMatchMode:(uint)numMode {
-  
   assert(numMode >= 2);
   assert(numMode <= cardCount);
   

@@ -13,7 +13,7 @@
 /// Object represents a deck of \c Card.
 @interface Deck : NSObject
 
-/// Adds a \c card to the end of the deck.
+/// Adds a \c Card to the end of the deck.
 - (void)addCard:(Card *)card;
 
 /// Returns (and pops) a random card from the deck.
