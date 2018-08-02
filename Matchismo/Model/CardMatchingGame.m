@@ -142,6 +142,7 @@ static const int COST_TO_CHOOSE = 1;
 }
 
 - (NSString *)cardsNames {
+  
   NSMutableString *cardNames = [[NSMutableString alloc] init];
   for (Card * card in self.chosenCardsQueue) {
     [cardNames appendString:card.contents];

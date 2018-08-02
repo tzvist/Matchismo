@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation CardGameViewController
 
+@synthesize game = _game;
+
 - (CardMatchingGame *)game {
   if (!_game) {
     _game = [self createNewGame];
@@ -31,31 +33,22 @@ NS_ASSUME_NONNULL_BEGIN
   return _game;
 }
 
-- (uint)getNumCardMatchMode {
-  switch (self.modeSwitch.selectedSegmentIndex) {
-    case 0:
-      return 2;
-    case 1:
-      return 3;
-    case 2:
-      return 4;
-  }
+- (uint)calcCardMatchMode {
   assert(NO);
 }
 
 - (IBAction)changeCardMatchMode {
-  self.game.numCardMatchMode = [self getNumCardMatchMode];
+  self.game.numCardMatchMode = [self calcCardMatchMode];
 }
 
 - (Deck *)creatDeck { //abstract method
   assert(NO);
 }
 
-
 - (CardMatchingGame *)createNewGame {
   Deck *deck = [self creatDeck];
   NSUInteger cardCount = [self.cardBottuns count];
-  uint numCardMatchMode = [self getNumCardMatchMode];
+  uint numCardMatchMode = [self calcCardMatchMode];
   
   return [[CardMatchingGame alloc] initWithCardCount:cardCount usingDeck:deck numCardMatchMode:numCardMatchMode];
 }
@@ -81,33 +74,9 @@ NS_ASSUME_NONNULL_BEGIN
   self.lastResultDescription.text = self.game.lastResultDescription;
 }
 
-- (NSString *)imageName:(Card *)card {
-  if (card.isChosen) {
-    return @"cardfront";
-  }
-  return @"cardback";
-}
-
-- (NSString *)cardContents:(Card *)card {
-  if (card.isChosen) {
-    return card.contents;
-  }
-  return @"";
-}
-
 - (void) updateButton:(NSUInteger) cardButtonIndex {
-  Card *card = [self.game cardAtIndex:cardButtonIndex];
-  UIButton *cardButton = self.cardBottuns[cardButtonIndex];
-  
-  NSString *imageName = [self imageName:card ];
-  NSString *cardContents = [self cardContents:card];
-  UIImage *image = [UIImage imageNamed:imageName];
-  
-  [cardButton setBackgroundImage:image forState:UIControlStateNormal];
-  [cardButton setTitle:cardContents forState:UIControlStateNormal];
-  cardButton.enabled = !card.isMatched;
+  return;
 }
-
 @end
 
 NS_ASSUME_NONNULL_END
