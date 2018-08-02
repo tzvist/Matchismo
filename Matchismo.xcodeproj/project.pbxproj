@@ -19,6 +19,7 @@
 		60920FD821087791004D5519 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 60920FD721087791004D5519 /* PlayingCardDeck.m */; };
 		60920FDB2108C48F004D5519 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 60920FDA2108C48F004D5519 /* CardMatchingGame.m */; };
 		60920FDE2109DEA1004D5519 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 60920FDD2109DEA1004D5519 /* Card.m */; };
+		60ABEDE9211201EF0080DD4E /* PlayingCardGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 60ABEDE7211201EF0080DD4E /* PlayingCardGameViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		60920FDA2108C48F004D5519 /* CardMatchingGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardMatchingGame.m; path = Matchismo/Model/CardMatchingGame.m; sourceTree = SOURCE_ROOT; };
 		60920FDC2109DEA1004D5519 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Matchismo/Model/Card.h; sourceTree = SOURCE_ROOT; };
 		60920FDD2109DEA1004D5519 /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Matchismo/Model/Card.m; sourceTree = SOURCE_ROOT; };
+		60ABEDE7211201EF0080DD4E /* PlayingCardGameViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = PlayingCardGameViewController.mm; sourceTree = "<group>"; };
+		60ABEDE8211201EF0080DD4E /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				60ABEDE62111DA710080DD4E /* Model */,
 				603D350C2107155200EF16C6 /* CardGameViewController.h */,
 				603D350D2107155200EF16C6 /* CartdGameViewController.m */,
+				60ABEDE7211201EF0080DD4E /* PlayingCardGameViewController.mm */,
+				60ABEDE8211201EF0080DD4E /* PlayingCardGameViewController.h */,
 				603D350F2107155200EF16C6 /* Main.storyboard */,
 				603D35122107155200EF16C6 /* Assets.xcassets */,
 				603D35172107155200EF16C6 /* Info.plist */,
@@ -302,6 +307,7 @@
 				60920FD52108615E004D5519 /* PlayingCard.m in Sources */,
 				60920FD221078A35004D5519 /* Deck.m in Sources */,
 				603D350E2107155200EF16C6 /* CartdGameViewController.m in Sources */,
+				60ABEDE9211201EF0080DD4E /* PlayingCardGameViewController.mm in Sources */,
 				603D35192107155200EF16C6 /* main.m in Sources */,
 				60920FDB2108C48F004D5519 /* CardMatchingGame.m in Sources */,
 				60920FDE2109DEA1004D5519 /* Card.m in Sources */,

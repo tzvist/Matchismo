@@ -1,13 +1,9 @@
-//
-//  CardMatchingGame.h
-//  Matchismo
-//
-//  Created by Tzvi Straus on 25/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import <Foundation/Foundation.h>
 #import "Deck.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// Object represents a card matching game.
 @interface CardMatchingGame : NSObject
@@ -40,3 +36,5 @@
 @property (nonatomic, readonly) NSString *lastResultDescription;
 
 @end
+
+NS_ASSUME_NONNULL_END

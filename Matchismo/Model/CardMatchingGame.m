@@ -1,12 +1,8 @@
-//
-//  CardMatchingGame.m
-//  Matchismo
-//
-//  Created by Tzvi Straus on 25/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import "CardMatchingGame.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface CardMatchingGame()
 
@@ -69,7 +65,6 @@
 static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
-
 
 - (void)popChosenCardsQueue {
   assert([self.chosenCardsQueue count] > 0);
@@ -173,3 +168,6 @@ static const int COST_TO_CHOOSE = 1;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
+

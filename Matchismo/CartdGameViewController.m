@@ -1,17 +1,14 @@
-//
-//  CardGameViewController.m
-//  Matchismo
-//
-//  Created by Tzvi Straus on 24/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+//  Created by Tzvi Straus.
 
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "Card.h"
 #import "CardMatchingGame.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CardGameViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *lastResultDescription;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardBottuns;
@@ -27,17 +24,11 @@
 
 @implementation CardGameViewController
 
-@synthesize game = _game;
-
 - (CardMatchingGame *)game {
-  if ( !_game) {
+  if (!_game) {
     _game = [self createNewGame];
   }
   return _game;
-}
-
-- (void)setGame:(CardMatchingGame *)game {
-  _game = game;
 }
 
 - (uint)getNumCardMatchMode {
@@ -56,8 +47,13 @@
   self.game.numCardMatchMode = [self getNumCardMatchMode];
 }
 
+- (Deck *)creatDeck { //abstract method
+  assert(NO);
+}
+
+
 - (CardMatchingGame *)createNewGame {
-  Deck *deck = [[PlayingCardDeck alloc] init];
+  Deck *deck = [self creatDeck];
   NSUInteger cardCount = [self.cardBottuns count];
   uint numCardMatchMode = [self getNumCardMatchMode];
   
@@ -72,7 +68,7 @@
 }
 
 - (IBAction)redeal {
-  self.game = nil;
+  _game = nil;
   [self updateUI];
   self.modeSwitch.enabled = YES;
 }
@@ -100,7 +96,6 @@
 }
 
 - (void) updateButton:(NSUInteger) cardButtonIndex {
-  
   Card *card = [self.game cardAtIndex:cardButtonIndex];
   UIButton *cardButton = self.cardBottuns[cardButtonIndex];
   
@@ -114,3 +109,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -1,13 +1,9 @@
-//
-//  PlayingCardDeck.m
-//  Matchismo
-//
-//  Created by Tzvi Straus on 25/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation PlayingCardDeck
 
@@ -25,3 +21,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

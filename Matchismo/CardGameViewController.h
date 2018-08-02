@@ -1,14 +1,17 @@
-//
-//  ViewController.h
-//  Matchismo
-//
-//  Created by Tzvi Straus on 24/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import <UIKit/UIKit.h>
+#import "Deck.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+/// Abstract class for game view controller.
+/// must implement below methods.
 @interface CardGameViewController : UIViewController
+
+/// Creats the relvanet For subclasses.
+- (Deck *)creatDeck;
 
 @end
 
+NS_ASSUME_NONNULL_END

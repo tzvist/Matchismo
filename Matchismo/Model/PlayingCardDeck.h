@@ -1,12 +1,8 @@
-//
-//  PlayingCardDeck.h
-//  Matchismo
-//
-//  Created by Tzvi Straus on 25/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import "Deck.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// Object representing Deck of \c PlayingCard.
 @interface PlayingCardDeck : Deck
@@ -15,3 +11,5 @@
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END

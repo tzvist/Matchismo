@@ -1,13 +1,9 @@
-//
-//  PlayingCard.h
-//  Matchismo
-//
-//  Created by Tzvi Straus on 25/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// Object represents a playing card.
 @interface PlayingCard : Card
@@ -30,3 +26,5 @@
 @property (nonatomic, readonly) NSUInteger rank;
 
 @end
+
+NS_ASSUME_NONNULL_END

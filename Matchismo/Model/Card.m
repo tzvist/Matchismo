@@ -1,12 +1,8 @@
-//
-//  Card.m
-//  Matchismo
-//
-//  Created by Tzvi Straus on 24/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import "Card.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation Card
 
@@ -20,3 +16,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

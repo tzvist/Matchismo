@@ -1,12 +1,8 @@
-//
-//  Card.h
-//  Matchismo
-//
-//  Created by Tzvi Straus on 24/07/2018.
-//  Copyright © 2018 Tzvi Straus. All rights reserved.
-//
+// Created by Tzvi Straus.
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// Object represents a card.
 @interface Card : NSObject
@@ -24,3 +20,5 @@
 - (int)match:(NSArray *)otherCards;
 
 @end
+
+NS_ASSUME_NONNULL_END
