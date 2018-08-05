@@ -37,6 +37,12 @@ NS_ASSUME_NONNULL_BEGIN
   assert(NO);
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewDidLoad];
+  [self updateUI];
+}
+
 - (IBAction)changeCardMatchMode {
   self.game.numCardMatchMode = [self calcCardMatchMode];
 }
@@ -67,16 +73,22 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void) updateUI {
+  if (!self.view.window) {
+    return;
+  }
   for ( NSUInteger cardButtonIndex = 0; cardButtonIndex < self.cardBottuns.count; cardButtonIndex++ ) {
-    [self updateButton:cardButtonIndex];
+    Card *card = [self.game cardAtIndex:cardButtonIndex];
+    UIButton *cardButton = self.cardBottuns[cardButtonIndex];
+    [self updateButton:cardButton withCard:card];
   }
   self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
   self.lastResultDescription.text = self.game.lastResultDescription;
 }
 
-- (void) updateButton:(NSUInteger) cardButtonIndex {
-  return;
-}
+- (void)updateButton:(UIButton *)cardButton withCard:(Card*)card {
+  assert(NO);
+};
+
 @end
 
 NS_ASSUME_NONNULL_END

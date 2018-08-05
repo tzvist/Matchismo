@@ -21,8 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (uint)calcCardMatchMode;
 
 /// protected
-- (void) updateButton:(NSUInteger) cardButtonIndex;
-
+- (void)updateButton:(UIButton *)cardButton withCard:(Card*)card;
 
 /// protected
 //- (NSString *)imageName:(Card *)card;

@@ -6,7 +6,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation Card
 
-- (int) match:(NSArray *) otherCards {
+- (int)match:(NSArray *) otherCards {
   return 0;
 }
 
