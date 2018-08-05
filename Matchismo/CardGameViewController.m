@@ -13,8 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardBottuns;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
-
 @property (weak, nonatomic) IBOutlet UILabel *scoreLable;
 
 /// Models \c game
@@ -60,7 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
-  self.modeSwitch.enabled = NO;
   NSUInteger cardButtonIndex = [self.cardBottuns  indexOfObject:sender];
   [self.game chooseCardAtIndex:cardButtonIndex];
   [self updateUI];
@@ -69,7 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)redeal {
   _game = nil;
   [self updateUI];
-  self.modeSwitch.enabled = YES;
 }
 
 - (void) updateUI {
