@@ -4,6 +4,7 @@
 #import "PlayingCardDeck.h"
 #import "Card.h"
 #import "CardMatchingGame.h"
+#import "HistoryViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Models \c game
 @property (strong, nonatomic) CardMatchingGame *game;
+
+@property (strong, nonatomic) NSString *resultDescriptions;
 
 @end
 
@@ -35,17 +38,33 @@ NS_ASSUME_NONNULL_BEGIN
   assert(NO);
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+  if(!self.resultDescriptions) {
+    self.resultDescriptions = @"";
+  }
   [self updateUI];
+}
+
+//
+//- (void)viewDidDisappear:(BOOL)animated {
+//  _game = nil;
+//  self.resultDescriptions = @"";
+//}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
+  if (![segue.identifier isEqualToString:@"show_history"]) {
+    return;
+  }
+  HistoryViewController *history = (HistoryViewController *)segue.destinationViewController;
+  history.history = self.resultDescriptions;
 }
 
 - (IBAction)changeCardMatchMode {
   self.game.numCardMatchMode = [self calcCardMatchMode];
 }
 
-- (Deck *)creatDeck { //abstract method
+- (Deck *)creatDeck { // abstract method
   assert(NO);
 }
 
@@ -65,13 +84,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)redeal {
   _game = nil;
+  self.resultDescriptions = @"";
   [self updateUI];
 }
 
 - (void) updateUI {
-  if (!self.view.window) {
-    return;
-  }
+  
   for ( NSUInteger cardButtonIndex = 0; cardButtonIndex < self.cardBottuns.count; cardButtonIndex++ ) {
     Card *card = [self.game cardAtIndex:cardButtonIndex];
     UIButton *cardButton = self.cardBottuns[cardButtonIndex];
@@ -79,6 +97,10 @@ NS_ASSUME_NONNULL_BEGIN
   }
   self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
   self.lastResultDescription.text = self.game.lastResultDescription;
+  if (self.game.lastResultDescription) {
+    self.resultDescriptions = [self.resultDescriptions stringByAppendingString:@"\n"];
+    self.resultDescriptions = [self.resultDescriptions stringByAppendingString:self.game.lastResultDescription];
+  }
 }
 
 - (void)updateButton:(UIButton *)cardButton withCard:(Card*)card {

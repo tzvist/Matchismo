@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6021CD682118362C00083BE1 /* HistoryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6021CD662118362C00083BE1 /* HistoryViewController.mm */; };
 		603D350B2107155200EF16C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 603D350A2107155200EF16C6 /* AppDelegate.m */; };
 		603D350E2107155200EF16C6 /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 603D350D2107155200EF16C6 /* CardGameViewController.m */; };
 		603D35112107155200EF16C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 603D350F2107155200EF16C6 /* Main.storyboard */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6021CD662118362C00083BE1 /* HistoryViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HistoryViewController.mm; sourceTree = "<group>"; };
+		6021CD672118362C00083BE1 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		603D35062107155200EF16C6 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		603D35092107155200EF16C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		603D350A2107155200EF16C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				60ABEDE62111DA710080DD4E /* Model */,
 				603D350C2107155200EF16C6 /* CardGameViewController.h */,
 				603D350D2107155200EF16C6 /* CardGameViewController.m */,
+				6021CD662118362C00083BE1 /* HistoryViewController.mm */,
+				6021CD672118362C00083BE1 /* HistoryViewController.h */,
 				60ABEDE7211201EF0080DD4E /* PlayingCardGameViewController.mm */,
 				60ABEDF3211341CE0080DD4E /* SetCardGameViewController.mm */,
 				60ABEDF4211341CE0080DD4E /* SetCardGameViewController.h */,
@@ -337,6 +342,7 @@
 			files = (
 				60920FD52108615E004D5519 /* PlayingCard.m in Sources */,
 				60920FD221078A35004D5519 /* Deck.m in Sources */,
+				6021CD682118362C00083BE1 /* HistoryViewController.mm in Sources */,
 				60ABEDEF211329D00080DD4E /* SetCard.mm in Sources */,
 				60ABEDF5211341CE0080DD4E /* SetCardGameViewController.mm in Sources */,
 				60ABEDF2211333C10080DD4E /* SetCardDeck.mm in Sources */,

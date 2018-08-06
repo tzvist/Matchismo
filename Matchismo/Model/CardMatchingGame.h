@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Text description of the last result.
 @property (nonatomic, readonly) NSString *lastResultDescription;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

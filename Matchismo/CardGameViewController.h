@@ -10,10 +10,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// must implement below methods.
 @interface CardGameViewController : UIViewController
 
-{
-@protected
-  CardMatchingGame *_game;
-}
 /// protected
 - (Deck *)creatDeck;
 
@@ -22,13 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// protected
 - (void)updateButton:(UIButton *)cardButton withCard:(Card*)card;
-
-/// protected
-//- (NSString *)imageName:(Card *)card;
-
-/// protected
-///- (NSString *)cardContents:(Card *)card;
-
 
 @end
 
