@@ -25,8 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation CardGameViewController
 
-@synthesize game = _game;
-
 - (CardMatchingGame *)game {
   if (!_game) {
     _game = [self createNewGame];
@@ -49,8 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
   if (![segue.identifier isEqualToString:@"show_history"]) {
     return;
   }
-  HistoryViewController *history = (HistoryViewController *)segue.destinationViewController;
-  history.resultHistory = self.resultDescriptions;
+  HistoryViewController *historyViewController = (HistoryViewController *)segue.destinationViewController;
+  historyViewController.resultHistory = self.resultDescriptions;
 }
 
 - (IBAction)changeCardMatchMode {
@@ -83,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void) updateUI {
-  for ( NSUInteger cardButtonIndex = 0; cardButtonIndex < self.cardBottuns.count; cardButtonIndex++ ) {
+  for (NSUInteger cardButtonIndex = 0; cardButtonIndex < self.cardBottuns.count; cardButtonIndex++) {
     Card *card = [self.game cardAtIndex:cardButtonIndex];
     UIButton *cardButton = self.cardBottuns[cardButtonIndex];
     [self updateButton:cardButton withCard:card];

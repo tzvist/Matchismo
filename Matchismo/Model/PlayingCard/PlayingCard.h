@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Initializes a new Playing Card with suit and rank.
 - (instancetype)initWithSuit:(NSString *)suit andRank:(NSUInteger)rank NS_DESIGNATED_INITIALIZER;
 
+/// Card contents.
+@property (strong, nonatomic) NSString *contents;
+
 /// Returns all valid suits for a \c PlayingCard object.
 + (NSArray *)validSuits;
 

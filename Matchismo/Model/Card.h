@@ -7,9 +7,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Object represents a card.
 @interface Card : NSObject
 
-/// Card contents.
-@property (strong, nonatomic) NSString *contents;
-
 /// Card is chosen.
 @property (nonatomic, getter=isChosen) BOOL chosen;
 

@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController : UIViewController
 
+/// The text to present.
 @property (strong, nonatomic) NSAttributedString *resultHistory;
 
 @end

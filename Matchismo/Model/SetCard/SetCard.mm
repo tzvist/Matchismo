@@ -1,21 +1,16 @@
 // Created by Tzvi Straus.
 
 #import "SetCard.h"
-#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 @interface SetCard()
 
-/// SetCard number.
 @property (nonatomic, readwrite) NSUInteger number;
 
-/// SetCard symbol.
 @property (nonatomic, readwrite) NSUInteger symbol;
 
-/// SetCard shading.
 @property (nonatomic, readwrite) NSUInteger shading;
 
-/// SetCard color.
 @property (nonatomic, readwrite) NSUInteger color;
 
 @end
@@ -33,10 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
     self.color = color;
   }
   return self;
-}
-
-- (NSString *)contents {
-  return @"";
 }
 
 - (BOOL)allDifferentArray:(NSArray *)numbers {
@@ -61,9 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
   return YES;
 }
 
-- (BOOL)allEqualOrAllDifferentArray:(NSArray *)characteristics {
-  return ([self allEqualArray:characteristics] ||
-          [self allDifferentArray:characteristics]);
+- (BOOL)allEqualOrAllDifferentArray:(NSArray *)numbers {
+  return ([self allEqualArray:numbers] || [self allDifferentArray:numbers]);
 }
 
 - (int)match:(NSArray *) otherCards {

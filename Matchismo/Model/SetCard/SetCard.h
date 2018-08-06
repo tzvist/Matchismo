@@ -1,5 +1,5 @@
-// Copyright (c) 2018 Lightricks. All rights reserved.
 // Created by Tzvi Straus.
+
 #import "Card.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
                          color:(NSUInteger)color
                          NS_DESIGNATED_INITIALIZER;
 
-
+/// Number of options for each characteristics.
 + (NSUInteger)OptionsCount;
 
 /// SetCard number.

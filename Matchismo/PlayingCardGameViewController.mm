@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
   return @"cardback";
 }
 
-- (NSString *)cardContents:(PlayingCard *)playCard{
+- (NSString *)cardContents:(PlayingCard *)playCard {
   if (playCard.isChosen) {
     return playCard.contents;
   }
@@ -37,23 +37,27 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)updateButton:(UIButton *)cardButton withCard:(Card*)card {
-  if ([card isKindOfClass: @"PlayingCard"]) {
+  if (![card isKindOfClass:[PlayingCard class]]) {
     return;
   }
   PlayingCard *playCard = (PlayingCard *)card;
   NSString *cardContents = [self cardContents:playCard];
   
-  NSString *imageName = [self imageName:playCard ];
+  NSString *imageName = [self imageName:playCard];
   UIImage *image = [UIImage imageNamed:imageName];
-
+  
   [cardButton setBackgroundImage:image forState:UIControlStateNormal];
   [cardButton setTitle:cardContents forState:UIControlStateNormal];
-
+  
   cardButton.enabled = !playCard.isMatched;
 }
 
 - (NSAttributedString *)cardConnten:(Card *)card {
-  return [[NSAttributedString alloc] initWithString:card.contents];
+  if (![card isKindOfClass:[PlayingCard class]]) {
+    return [[NSAttributedString alloc] init];
+  }
+  PlayingCard *playCard = (PlayingCard *)card;
+  return [[NSAttributedString alloc] initWithString:playCard.contents];
 }
 
 @end

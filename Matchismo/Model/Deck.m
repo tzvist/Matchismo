@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Deck()
 
 /// Array of cards in the deck.
-@property (strong, nonatomic) NSMutableArray *cards;
+@property (strong, nonatomic) NSMutableArray<Card *> *cards;
 
 @end
 
