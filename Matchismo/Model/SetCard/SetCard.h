@@ -31,8 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// SetCard color.
 @property (nonatomic, readonly) NSUInteger color;
 
-@property (nonatomic, readonly) NSAttributedString *attributedContents;
-
 @end
 
 NS_ASSUME_NONNULL_END

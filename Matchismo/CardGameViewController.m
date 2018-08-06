@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Models \c game
 @property (strong, nonatomic) CardMatchingGame *game;
 
-@property (strong, nonatomic) NSString *resultDescriptions;
+@property (strong, nonatomic) NSAttributedString *resultDescriptions;
 
 @end
 
@@ -40,24 +40,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)viewWillAppear:(BOOL)animated {
   if(!self.resultDescriptions) {
-    self.resultDescriptions = @"";
+    self.resultDescriptions = [[NSAttributedString alloc] init];
   }
   [self updateUI];
 }
-
-//
-//- (void)viewDidDisappear:(BOOL)animated {
-//  _game = nil;
-//  self.resultDescriptions = @"";
-//}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender {
   if (![segue.identifier isEqualToString:@"show_history"]) {
     return;
   }
   HistoryViewController *history = (HistoryViewController *)segue.destinationViewController;
-  history.history = self.resultDescriptions;
+  history.resultHistory = self.resultDescriptions;
 }
 
 - (IBAction)changeCardMatchMode {
@@ -78,28 +71,41 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)touchCardButton:(UIButton *)sender {
   NSUInteger cardButtonIndex = [self.cardBottuns  indexOfObject:sender];
-  [self.game chooseCardAtIndex:cardButtonIndex];
+  NSArray<Card *> *cards = [self.game chooseCardAtIndex:cardButtonIndex];
   [self updateUI];
+  [self updateResultDescription:cards];
 }
 
 - (IBAction)redeal {
   _game = nil;
-  self.resultDescriptions = @"";
+  self.resultDescriptions = [[NSAttributedString alloc] init];
   [self updateUI];
 }
 
 - (void) updateUI {
-  
   for ( NSUInteger cardButtonIndex = 0; cardButtonIndex < self.cardBottuns.count; cardButtonIndex++ ) {
     Card *card = [self.game cardAtIndex:cardButtonIndex];
     UIButton *cardButton = self.cardBottuns[cardButtonIndex];
     [self updateButton:cardButton withCard:card];
   }
   self.scoreLable.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
-  self.lastResultDescription.text = self.game.lastResultDescription;
+  self.lastResultDescription.text = @"";
+}
+
+
+- (void)updateResultDescription:(NSArray<Card *> *)cards {
+  NSMutableAttributedString *description = [self cardsConntens:cards];
+  self.lastResultDescription.text = @"";
   if (self.game.lastResultDescription) {
-    self.resultDescriptions = [self.resultDescriptions stringByAppendingString:@"\n"];
-    self.resultDescriptions = [self.resultDescriptions stringByAppendingString:self.game.lastResultDescription];
+    NSMutableAttributedString *lastResultDescription = [[NSMutableAttributedString alloc] initWithString:self.game.lastResultDescription];
+    [description appendAttributedString:lastResultDescription];
+    [self.lastResultDescription setAttributedText:description];
+    
+    NSAttributedString *lineBreak = [[NSAttributedString alloc] initWithString:@"\n"];
+    NSMutableAttributedString *newResults = self.resultDescriptions.mutableCopy;
+    [newResults appendAttributedString:lineBreak];
+    [newResults appendAttributedString:description];
+    self.resultDescriptions = newResults;
   }
 }
 
@@ -107,6 +113,17 @@ NS_ASSUME_NONNULL_BEGIN
   assert(NO);
 };
 
+- (NSAttributedString *)cardConnten:(Card *)card {
+  assert(NO);
+}
+
+- (NSMutableAttributedString *)cardsConntens:(NSArray<Card *> *)cards {
+  NSMutableAttributedString *cardNames = [[NSMutableAttributedString alloc] init];
+  for (Card *card in cards) {
+    [cardNames appendAttributedString:[self cardConnten:card]];
+  }
+  return cardNames;
+}
 @end
 
 NS_ASSUME_NONNULL_END

@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
                  NS_DESIGNATED_INITIALIZER;
 
 /// Represents choosing a card \c index, in a card match.
-- (void)chooseCardAtIndex:(NSUInteger) index;
+- (NSArray<Card *> *)chooseCardAtIndex:(NSUInteger) index;
 
 /// Returns card at \c index.
 - (Card *)cardAtIndex:(NSUInteger) index;

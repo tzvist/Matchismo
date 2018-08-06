@@ -35,38 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
   return self;
 }
 
-+ (NSArray *)validSymbols {
-  return @[@"■",@"●",@"▲" ];
-}
-
-+ (NSArray *)validColors {
-  return @[[UIColor redColor], [UIColor greenColor], [UIColor purpleColor]];
-}
-
-+ (NSArray *)validShadings {
-  return @[@(0.0f),@(0.4f), @(1.0f)];
-}
-@dynamic attributedContents;
-- (NSAttributedString *)attributedContents {
-  NSMutableAttributedString *content = [[NSMutableAttributedString alloc] init];
-  NSString *symbol = [SetCard validSymbols][self.symbol];
-  for (int i = 0 ; i<=self.number; i++) {
-    [content.mutableString appendString:symbol];
-  }
-  
-  NSNumber *valueAlpha = [SetCard validShadings][self.shading];
-  UIColor *color = [SetCard validColors][self.color] ;
-
-  float alpha = [valueAlpha floatValue];
-  UIColor *colorWithAlpha = [color colorWithAlphaComponent:alpha];
-  NSRange fullRange =  [content.string rangeOfString:content.string];
-  [content addAttribute:NSForegroundColorAttributeName value:colorWithAlpha range:fullRange];
-  [content addAttribute:NSStrokeWidthAttributeName value:@(-5) range: fullRange];
-  [content addAttribute:NSStrokeColorAttributeName value:color range:fullRange];
-  
-  return content;
-}
-
 - (NSString *)contents {
   return @"";
 }

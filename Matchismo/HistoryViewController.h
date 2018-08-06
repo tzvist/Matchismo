@@ -7,8 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController : UIViewController
 
-@property (strong, nonatomic) NSString *history;
-
+@property (strong, nonatomic) NSAttributedString *resultHistory;
 
 @end
 

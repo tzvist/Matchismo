@@ -52,6 +52,10 @@ NS_ASSUME_NONNULL_BEGIN
   cardButton.enabled = !playCard.isMatched;
 }
 
+- (NSAttributedString *)cardConnten:(Card *)card {
+  return [[NSAttributedString alloc] initWithString:card.contents];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

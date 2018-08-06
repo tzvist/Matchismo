@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation HistoryViewController
 - (void)viewWillAppear:(BOOL)animated {
-  [self.text setText:self.history];
+  [self.text setAttributedText:self.resultHistory];
 }
 
 @end

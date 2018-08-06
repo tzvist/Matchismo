@@ -9,10 +9,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readwrite) NSInteger score;
 
 /// List of cards to match.
-@property (nonatomic, strong) NSMutableArray *cards; // of Card
+@property (nonatomic, strong) NSMutableArray<Card *> *cards; // of Card
 
 /// Queue conating currently chosen cards.
-@property (nonatomic, strong) NSMutableArray *chosenCardsQueue; // of Card
+@property (nonatomic, strong) NSMutableArray<Card *> *chosenCardsQueue; // of Card
 
 @property (nonatomic, strong, readwrite) NSString *lastResultDescription;
 
@@ -73,21 +73,21 @@ static const int COST_TO_CHOOSE = 1;
   [self.chosenCardsQueue removeObjectAtIndex:0];
 }
 
-- (void)calcScoreMismatch:(NSString *)cardsString {
+- (void)calcScoreMismatch {
   self.score -= MISMATCH_PENALTY;
   self.lastResultDescription = [[NSString alloc]
                                 initWithFormat:
-                                @"%@ don't match! %d points penalty!",
-                                cardsString, MISMATCH_PENALTY];
+                                @"don't match! %d points penalty!",
+                                MISMATCH_PENALTY];
 }
 
-- (void)calcScoreMatch:(NSString *)cardsString matchCount:(uint)matchCount matchScore:(uint)matchScore {
-  uint addToScore = matchScore*(matchCount)*MATCH_BONUS;
+- (void)calcScoreWithMatchScore:(uint)matchScore {
+  uint addToScore = matchScore*MATCH_BONUS;
   self.score += addToScore;
   self.lastResultDescription = [[NSString alloc]
                                 initWithFormat:
-                                @" Matched %@ for %d points.",
-                                cardsString, addToScore ];
+                                @"matched for %d points.",
+                                addToScore ];
   
   for (Card * otherCard in self.chosenCardsQueue){
     otherCard.matched = YES;
@@ -95,77 +95,66 @@ static const int COST_TO_CHOOSE = 1;
   [self.chosenCardsQueue removeAllObjects];
 }
 
-- (void)calScore:(uint)matchScore matchCount:(uint)matchCount
-     cardsString:(NSString *)cardsString {
+- (void)calScore:(uint)matchScore matchCount:(uint)matchCount {
   if (matchCount == 0) {
-    [self calcScoreMismatch:cardsString];
+    [self calcScoreMismatch];
   } else {
-    [self calcScoreMatch:cardsString matchCount:matchCount matchScore:matchScore];
+    [self calcScoreWithMatchScore:matchScore];
   }
 }
 
 - (void)tryToMatch {
   uint matchCount = 0;
   uint matchScoreSum = 0;
-  NSString *cardsStr =  [self cardsNames];
-  for (Card * card in [self.chosenCardsQueue reverseObjectEnumerator]){
+  for (Card *card in [self.chosenCardsQueue reverseObjectEnumerator]){
     assert(!card.isMatched);
     assert(card.isChosen);
     NSInteger matchScore = [card match:self.chosenCardsQueue];
     if (matchScore) {
       matchScoreSum += matchScore;
-      matchCount+=1;
+      matchCount += 1;
       card.matched = YES;
       [self.chosenCardsQueue removeObject:card];
     }
   }
-  [self calScore:matchScoreSum matchCount:matchCount cardsString: cardsStr];
+  [self calScore:matchScoreSum matchCount:matchCount];
 }
 
-- (void)chooseNewCard:(Card *)card {
+- (NSArray<Card *> *)chooseNewCard:(Card *)card {
   assert(![self.chosenCardsQueue containsObject:card]);
   self.score -= COST_TO_CHOOSE;
   card.chosen = YES;
   [self.chosenCardsQueue addObject:card];
-  self.lastResultDescription = [self cardsNames];
+  NSArray<Card *> *res = [self.chosenCardsQueue copy];
 
   if ([self.chosenCardsQueue count] < self.numCardMatchMode) {
-    return;
+    return res;
   }
   
   [self tryToMatch];
   
-  if ([self.chosenCardsQueue count] < self.numCardMatchMode) {
-    return;
+  if ([self.chosenCardsQueue count] == self.numCardMatchMode) {
+    [self popChosenCardsQueue];
   }
-  [self popChosenCardsQueue];
+  return res;
 }
 
-- (NSString *)cardsNames {
-  
-  NSMutableString *cardNames = [[NSMutableString alloc] init];
-  for (Card * card in self.chosenCardsQueue) {
-    [cardNames appendString:card.contents];
-  }
-  return cardNames;
-}
-
-- (void)unChooseCard:(Card *)card {
+- (NSArray<Card *> *)unChooseCard:(Card *)card {
   card.chosen = NO;
   [self.chosenCardsQueue removeObject:card];
-  self.lastResultDescription = [self cardsNames];
+  return [self.chosenCardsQueue copy] ;
 }
 
-- (void)chooseCardAtIndex:(NSUInteger)index{
+- (NSArray<Card *> *)chooseCardAtIndex:(NSUInteger) index{
   Card *card = [self cardAtIndex:index];
   assert(card);
   assert(!card.isMatched);
+  self.lastResultDescription = @"";
   
-  if(card.isChosen){
-    [self unChooseCard:card];
-    return;
+  if (card.isChosen) {
+    return [self unChooseCard:card];
   }
-  [self chooseNewCard:card];
+  return [self chooseNewCard:card];
 }
 
 @end

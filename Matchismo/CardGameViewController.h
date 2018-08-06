@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// protected
 - (void)updateButton:(UIButton *)cardButton withCard:(Card*)card;
 
-@end
+/// protected
+- (NSAttributedString *)cardConnten:(Card *)card;
 
+@end
 
 NS_ASSUME_NONNULL_END
