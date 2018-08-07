@@ -22,20 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
   return 2;
 }
 
-- (NSString *)imageName:(PlayingCard *)playCard {
-  if (playCard.isChosen) {
-    return @"cardfront";
-  }
-  return @"cardback";
-}
-
-- (NSString *)cardContents:(PlayingCard *)playCard {
-  if (playCard.isChosen) {
-    return playCard.contents;
-  }
-  return @"";
-}
-
 - (void)updateButton:(UIButton *)cardButton withCard:(Card*)card {
   if (![card isKindOfClass:[PlayingCard class]]) {
     return;
@@ -58,6 +44,21 @@ NS_ASSUME_NONNULL_BEGIN
   }
   PlayingCard *playCard = (PlayingCard *)card;
   return [[NSAttributedString alloc] initWithString:playCard.contents];
+}
+
+
+- (NSString *)imageName:(PlayingCard *)playCard {
+  if (playCard.isChosen) {
+    return @"cardfront";
+  }
+  return @"cardback";
+}
+
+- (NSString *)cardContents:(PlayingCard *)playCard {
+  if (playCard.isChosen) {
+    return playCard.contents;
+  }
+  return @"";
 }
 
 @end
