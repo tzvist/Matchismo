@@ -5,6 +5,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// View Controller that presents the game history.
 @interface HistoryViewController : UIViewController
 
 /// The text to present.

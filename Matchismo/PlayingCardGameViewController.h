@@ -4,6 +4,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// View Controller for playing card game.
 @interface PlayingCardGameViewController : CardGameViewController
 
 @end
