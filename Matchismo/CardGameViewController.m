@@ -32,7 +32,20 @@ NS_ASSUME_NONNULL_BEGIN
   return _game;
 }
 
-- (uint)calcCardMatchMode {
+- (uint)calcCardMatchMode { // abstract method
+  assert(NO);
+}
+
+- (Deck *)creatDeck { // abstract method
+  assert(NO);
+}
+
+
+- (void)updateButton:(UIButton *)cardButton withCard:(Card*)card { // abstract method
+  assert(NO);
+}
+
+- (NSAttributedString *)cardConnten:(Card *)card {// abstract method
   assert(NO);
 }
 
@@ -53,10 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)changeCardMatchMode {
   self.game.numCardMatchMode = [self calcCardMatchMode];
-}
-
-- (Deck *)creatDeck { // abstract method
-  assert(NO);
 }
 
 - (CardMatchingGame *)createNewGame {
@@ -90,7 +99,6 @@ NS_ASSUME_NONNULL_BEGIN
   self.lastResultDescription.text = @"";
 }
 
-
 - (void)updateResultDescription:(NSArray<Card *> *)cards {
   NSMutableAttributedString *description = [self cardsConntens:cards];
   self.lastResultDescription.text = @"";
@@ -105,14 +113,6 @@ NS_ASSUME_NONNULL_BEGIN
     [newResults appendAttributedString:description];
     self.resultDescriptions = newResults;
   }
-}
-
-- (void)updateButton:(UIButton *)cardButton withCard:(Card*)card {
-  assert(NO);
-};
-
-- (NSAttributedString *)cardConnten:(Card *)card {
-  assert(NO);
 }
 
 - (NSMutableAttributedString *)cardsConntens:(NSArray<Card *> *)cards {

@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Matchismo/Model/SetCard/SetCard.mm"
-            timestampString = "555267768.5341541"
+            timestampString = "555319601.591759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Matchismo/Model/SetCard/SetCard.mm"
-            timestampString = "555267768.5342"
+            timestampString = "555319601.591814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Matchismo/CardGameViewController.m"
-            timestampString = "555267768.534235"
+            timestampString = "555319601.591853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-updateResultDescription:"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Matchismo/CardGameViewController.m"
-            timestampString = "555267768.5342669"
+            timestampString = "555319601.592128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-updateResultDescription:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Matchismo/CardGameViewController.m"
-            timestampString = "555267768.5342979"
+            timestampString = "555319601.59229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-redeal"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,13 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Matchismo/PlayingCardGameViewController.mm"
-            timestampString = "555267768.534332"
+            timestampString = "555319601.59245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "PlayingCardGameViewController"
-            landmarkType = "3">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-updateButton:withCard:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
