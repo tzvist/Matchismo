@@ -68,12 +68,13 @@ NS_ASSUME_NONNULL_BEGIN
     [content.mutableString appendString:symbol];
   }
   
-  NSNumber *valueAlpha = [self validShadings][setCard.shading];
   UIColor *color = [self validColors][setCard.color] ;
-  
+  NSNumber *valueAlpha = [self validShadings][setCard.shading];
   float alpha = [valueAlpha floatValue];
   UIColor *colorWithAlpha = [color colorWithAlphaComponent:alpha];
+  
   NSRange fullRange = [content.string rangeOfString:content.string];
+  
   [content addAttribute:NSForegroundColorAttributeName value:colorWithAlpha range:fullRange];
   [content addAttribute:NSStrokeWidthAttributeName value:@(-5) range:fullRange];
   [content addAttribute:NSStrokeColorAttributeName value:color range:fullRange];
