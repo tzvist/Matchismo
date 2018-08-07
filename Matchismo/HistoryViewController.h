@@ -1,10 +1,8 @@
-// Copyright (c) 2018 Lightricks. All rights reserved.
 // Created by Tzvi Straus.
 
 #import "CardGameViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
 
 /// View Controller that presents the game history.
 @interface HistoryViewController : UIViewController

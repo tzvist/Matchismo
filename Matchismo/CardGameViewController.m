@@ -40,7 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
   assert(NO);
 }
 
-
 - (void)updateButton:(UIButton *)cardButton withCard:(Card*)card { // abstract method
   assert(NO);
 }
