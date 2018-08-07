@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation PlayingCardGameViewController
 
-
 - (Deck *)creatDeck {
   return [[PlayingCardDeck alloc] init];
 }
@@ -27,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
     return;
   }
   PlayingCard *playCard = (PlayingCard *)card;
+  
   NSString *cardContents = [self cardContents:playCard];
   
   NSString *imageName = [self imageName:playCard];
